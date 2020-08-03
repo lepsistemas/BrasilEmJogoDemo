@@ -1,17 +1,16 @@
 ﻿using UnityEngine;
 using UnityEngine.EventSystems;
 
-public class JoystickButton : MonoBehaviour, IPointerUpHandler, IPointerDownHandler {
+public class JoystickButton : MonoBehaviour, IPointerDownHandler, IPointerUpHandler {
 
-    [HideInInspector]
-    protected bool pressed;
+    private bool holding;
 
-    public bool Pressed {
+    public bool Holding {
         get {
-            return this.pressed;
+            return this.holding;
         }
         set {
-            this.pressed = value;
+            this.holding = value;
         }
     }
     
@@ -24,10 +23,10 @@ public class JoystickButton : MonoBehaviour, IPointerUpHandler, IPointerDownHand
     }
 
     public void OnPointerDown(PointerEventData eventData) {
-        this.Pressed = true;
+        this.holding = true;
     }
 
     public void OnPointerUp(PointerEventData eventData) {
-        this.Pressed = false;
+        this.holding = false;
     }
 }

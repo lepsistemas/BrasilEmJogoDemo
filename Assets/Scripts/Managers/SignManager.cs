@@ -26,18 +26,14 @@ public class SignManager : MonoBehaviour {
     }
 
     public void ShowSign(string sign) {
+        UIManager.Instance.IsDialogActive = true;
         this.dialogBox.SetActive(true);
         this.message.text = sign;
-        UIManager.Instance.IsDialogActive = true;
     }
 
     public void HideSign() {
+        UIManager.Instance.IsDialogActive = false;
         this.dialogBox.SetActive(false);
         this.message.text = null;
-        UIManager.Instance.IsDialogActive = false;
-    }
-
-    public bool IsDialogBoxActivated() {
-        return this.dialogBox != null && this.dialogBox.activeInHierarchy;
     }
 }

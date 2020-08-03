@@ -46,7 +46,7 @@ public class Player : Character {
     protected override void SetSpeed() {
         float factor = 1f;
         if (this.CanMove) {
-            if (ControllerManager.Instance.Button3Fired) {
+            if (ControllerManager.Instance.SecondaryButtonFired) {
                 factor = 2f;
             }
             this.speed = Player.DEFAULT_SPEED * factor;

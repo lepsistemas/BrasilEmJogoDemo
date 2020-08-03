@@ -16,10 +16,7 @@ public class ControllerManager : MonoBehaviour {
     private Joystick joystick = null;
 
     [SerializeField]
-    private JoystickButton fire1Button = null;
-
-    [SerializeField]
-    private JoystickButton fire3Button = null;
+    private JoystickButton secondaryButton = null;
 
     private float x;
 
@@ -43,25 +40,25 @@ public class ControllerManager : MonoBehaviour {
         }
     }
 
-    private bool button1Fired;
+    private bool primaryButtonFired;
 
-    public bool Button1Fired {
+    public bool PrimaryButtonFired {
         get {
-            return this.button1Fired;
+            return this.primaryButtonFired;
         }
         set {
-            this.button1Fired = value;
+            this.primaryButtonFired = value;
         }
     }
 
-    private bool button3Fired;
+    private bool secondaryButtonFired;
 
-    public bool Button3Fired {
+    public bool SecondaryButtonFired {
         get {
-            return this.button3Fired;
+            return this.secondaryButtonFired;
         }
         set {
-            this.button3Fired = value;
+            this.secondaryButtonFired = value;
         }
     }
 
@@ -77,16 +74,20 @@ public class ControllerManager : MonoBehaviour {
         this.x = Input.GetAxisRaw("Horizontal") + this.joystick.Horizontal;
         this.y = Input.GetAxisRaw("Vertical") + this.joystick.Vertical;
 
-        if (Input.GetButtonDown("Fire1") || this.fire1Button.Pressed) {
-            this.button1Fired = true;
+        if (Input.GetButtonDown("Fire1")) {
+            this.primaryButtonFired = true;
         } else {
-            this.button1Fired = false;
+            this.primaryButtonFired = false;
         }
 
-        if (Input.GetButton("Fire3") || this.fire3Button.Pressed) {
-            this.button3Fired = true;
+        if (Input.GetButton("Fire3") || this.secondaryButton.Holding) {
+            this.secondaryButtonFired = true;
         } else {
-            this.button3Fired = false;
+            this.secondaryButtonFired = false;
         }
+    }
+
+    public void Fire1Button() {
+        this.primaryButtonFired = true;  
     }
 }

@@ -23,7 +23,7 @@ public class UIManager : MonoBehaviour {
     [SerializeField]
     private GameObject joystickDialog = null;
 
-    private bool isDialogActive;
+    private bool isDialogActive = false;
 
     public bool IsDialogActive {
         get {
@@ -37,8 +37,10 @@ public class UIManager : MonoBehaviour {
     void Start() {
         if (Application.platform == RuntimePlatform.Android) {
             this.joystickDialog.SetActive(true);
+            Cursor.visible = false;
         } else {
-            this.joystickDialog.SetActive(false);
+            this.joystickDialog.SetActive(true);
+            Cursor.visible = true;
         }
     }
 

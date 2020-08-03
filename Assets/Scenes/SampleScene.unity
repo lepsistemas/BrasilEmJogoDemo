@@ -75116,8 +75116,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   joystick: {fileID: 933333242}
-  fire1Button: {fileID: 7821998002932113883}
-  fire3Button: {fileID: 1410429523}
+  secondaryButton: {fileID: 1410429523}
 --- !u!1 &2036206061
 GameObject:
   m_ObjectHideFlags: 0
@@ -75235,14 +75234,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 2132209176, guid: e1dc27eda5ba1ac449fad1983de057f1, type: 3}
-      propertyPath: m_IsActive
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 2132209177, guid: e1dc27eda5ba1ac449fad1983de057f1, type: 3}
-      propertyPath: m_AnchoredPosition.y
-      value: 130
-      objectReference: {fileID: 0}
+    - target: {fileID: 1559164431, guid: e1dc27eda5ba1ac449fad1983de057f1, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 1819730817}
     - target: {fileID: 4391606324292862214, guid: e1dc27eda5ba1ac449fad1983de057f1,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -75355,18 +75350,6 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: e1dc27eda5ba1ac449fad1983de057f1, type: 3}
---- !u!114 &7821998002932113883 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 5645537747854475547, guid: e1dc27eda5ba1ac449fad1983de057f1,
-    type: 3}
-  m_PrefabInstance: {fileID: 7821998002932113882}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ba161228ba8e84a1d8f67f63b2cc2d51, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1001 &9185551148080689072
 PrefabInstance:
   m_ObjectHideFlags: 0

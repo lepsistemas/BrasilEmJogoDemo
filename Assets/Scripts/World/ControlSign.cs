@@ -14,8 +14,8 @@ public class ControlSign : MonoBehaviour {
 
     void Update() {
         if (this.canActivate) {
-            if (ControllerManager.Instance.Button1Fired) {
-                if (!SignManager.Instance.IsDialogBoxActivated()) {
+            if (ControllerManager.Instance.PrimaryButtonFired) {
+                if (!UIManager.Instance.IsDialogActive) {
                     SignManager.Instance.ShowSign(this.sign);
                     GameManager.Instance.Player.CanMove = false;
                 } else {
