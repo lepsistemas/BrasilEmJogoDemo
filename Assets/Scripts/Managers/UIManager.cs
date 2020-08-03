@@ -20,9 +20,6 @@ public class UIManager : MonoBehaviour {
         }
     }
 
-    [SerializeField]
-    private GameObject joystickDialog = null;
-
     private bool isDialogActive = false;
 
     public bool IsDialogActive {
@@ -35,13 +32,11 @@ public class UIManager : MonoBehaviour {
     }
     
     void Start() {
-        if (Application.platform == RuntimePlatform.Android) {
-            this.joystickDialog.SetActive(true);
-            Cursor.visible = false;
-        } else {
-            this.joystickDialog.SetActive(true);
-            Cursor.visible = true;
-        }
+        // if (Application.platform == RuntimePlatform.Android) {
+        //     this.virtualJoystick.gameObject.SetActive(true);
+        // } else {
+        //     this.virtualJoystick.gameObject.SetActive(true);
+        // }
     }
 
     void Update() {

@@ -12,12 +12,6 @@ public class ControllerManager : MonoBehaviour {
         }
     }
 
-    [SerializeField]
-    private Joystick joystick = null;
-
-    [SerializeField]
-    private JoystickButton secondaryButton = null;
-
     private float x;
 
     public float X {
@@ -71,8 +65,8 @@ public class ControllerManager : MonoBehaviour {
     }
 
     void Update() {
-        this.x = Input.GetAxisRaw("Horizontal") + this.joystick.Horizontal;
-        this.y = Input.GetAxisRaw("Vertical") + this.joystick.Vertical;
+        this.x = Input.GetAxisRaw("Horizontal")/* + this.virtualJoystick.Joystick.Horizontal*/;
+        this.y = Input.GetAxisRaw("Vertical")/* + this.virtualJoystick.Joystick.Vertical*/;
 
         if (Input.GetButtonDown("Fire1")) {
             this.primaryButtonFired = true;
@@ -80,14 +74,10 @@ public class ControllerManager : MonoBehaviour {
             this.primaryButtonFired = false;
         }
 
-        if (Input.GetButton("Fire3") || this.secondaryButton.Holding) {
+        if (Input.GetButton("Fire3")/* || this.virtualJoystick.SecondaryButton.Holding*/) {
             this.secondaryButtonFired = true;
         } else {
             this.secondaryButtonFired = false;
         }
-    }
-
-    public void Fire1Button() {
-        this.primaryButtonFired = true;  
     }
 }
