@@ -7,11 +7,15 @@ public class TimeManager : MonoBehaviour {
 
     public static TimeManager Instance {
         get {
-            if (instance == null) {
-                GameObject go = new GameObject();
-                instance = go.AddComponent<TimeManager>();
-            }
             return instance;
+        }
+    }
+
+    private void Awake() {
+        if (instance != null && instance != this && this.gameObject != null) {
+            Destroy(this.gameObject);
+        } else {
+            instance = this;
         }
     }
 

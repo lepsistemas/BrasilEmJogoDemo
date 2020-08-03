@@ -16,13 +16,13 @@ public class SignManager : MonoBehaviour {
 
     [SerializeField]
     private Text message = null;
-    
-    void Start() {
-        instance = this;
-    }
 
-    void Update() {
-        
+    private void Awake() {
+        if (instance != null && instance != this && this.gameObject != null) {
+            Destroy(this.gameObject);
+        } else {
+            instance = this;
+        }
     }
 
     public void ShowSign(string sign) {

@@ -7,45 +7,34 @@ public class ControlSign : MonoBehaviour {
     [SerializeField]
     private string sign = null;
 
-    private bool activated;
-
-    private bool action;
+    private bool canActivate;
     
     void Start() {
-        ControllerManager.Instance.OnFireButton1Pressed += this.FireButton1;
     }
 
     void Update() {
-        if (this.activated) {
-            ExecuteAfterTime();
+        if (this.canActivate) {
+            if (ControllerManager.Instance.Button1Fired) {
+                if (!SignManager.Instance.IsDialogBoxActivated()) {
+                    SignManager.Instance.ShowSign(this.sign);
+                    GameManager.Instance.Player.CanMove = false;
+                } else {
+                    SignManager.Instance.HideSign();
+                    GameManager.Instance.Player.CanMove = true;
+                }
+            }
         }
-    }
-
-    IEnumerator ExecuteAfterTime() {
-        yield return new WaitForSeconds(500);
-
-        if (this.action) {
-            Debug.Log("Show");
-            SignManager.Instance.ShowSign(this.sign);
-        } else {
-            Debug.Log("Hide");
-            SignManager.Instance.HideSign();
-        }
-    }
-
-    private void FireButton1() {
-        this.action = !this.action;
     }
 
     private void OnTriggerEnter2D(Collider2D collision) {
         if (collision.tag == "Player") {
-            this.activated = true;
+            this.canActivate = true;
         }
     }
 
     private void OnTriggerExit2D(Collider2D collision) {
         if (collision.tag == "Player") {
-            this.activated = false;
+            this.canActivate = false;
         }
     }
 }

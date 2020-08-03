@@ -10,7 +10,6 @@ public class StartDialog : MonoBehaviour {
 
     void Start() {
         this.activated = false;
-        ControllerManager.Instance.OnFireButton1Pressed += this.FireButton1;
     }
 
     void Update() {

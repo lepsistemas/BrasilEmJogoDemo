@@ -35,15 +35,10 @@ public class DialogManager : MonoBehaviour {
 
     private int currentMessageIndex;
 
-    private bool nextMessage;
-
-    private bool isSign;
-
     void Start() {
         instance = this;
 
         this.currentMessageIndex = 0;
-        ControllerManager.Instance.OnFireButton1Pressed += this.FireButton1;
         // this.dialogs = new Dialog[] {
         //     new Dialog("Pedro Álvares Cabral", "Ora pois, que desastre! Quebraste minha bússola!"),
         //     new Dialog("Pedro Álvares Cabral", "Agora como poderei navegar até às Índias?"),
@@ -54,22 +49,12 @@ public class DialogManager : MonoBehaviour {
 
     void Update() {
         if (this.dialogs != null && this.dialogs.Length > 0 && this.IsDialogBoxActivated()) {
-            if (!this.nextMessage) {
+            if (this.currentMessageIndex >= this.dialogs.Length) {
                 this.ResetDialog();
-            }
-            if (!this.isSign) {
-                this.nextMessage = false;
-                if (this.currentMessageIndex >= this.dialogs.Length) {
-                    this.ResetDialog();
-                } else {
-                    this.ShowMessage();
-                }
+            } else {
+                this.ShowMessage();
             }
         }
-    }
-
-    private void FireButton1() {
-        this.nextMessage = true;
     }
 
     public bool IsDialogBoxActivated() {
@@ -94,7 +79,6 @@ public class DialogManager : MonoBehaviour {
     }
 
     private void ResetDialog() {
-        this.nextMessage = false;
         this.dialogs = null;
         this.currentMessageIndex = 0;
         this.message.text = "";
@@ -112,15 +96,7 @@ public class DialogManager : MonoBehaviour {
             if (this.dialogs[0].Speaker != null) {
                 this.titleBox.SetActive(true);
             }
-            this.nextMessage = true;
             UIManager.Instance.IsDialogActive = true;
         }
-    }
-
-    public void ShowSign(string sign) {
-        this.isSign = true;
-        this.dialogBox.SetActive(true);
-        this.message.text = sign;
-        UIManager.Instance.IsDialogActive = true;
     }
 }

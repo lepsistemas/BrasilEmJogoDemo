@@ -12,6 +12,14 @@ public class UIManager : MonoBehaviour {
         }
     }
 
+    private void Awake() {
+        if (instance != null && instance != this && this.gameObject != null) {
+            Destroy(this.gameObject);
+        } else {
+            instance = this;
+        }
+    }
+
     [SerializeField]
     private GameObject joystickDialog = null;
 
@@ -27,7 +35,6 @@ public class UIManager : MonoBehaviour {
     }
     
     void Start() {
-        instance = this;
         if (Application.platform == RuntimePlatform.Android) {
             this.joystickDialog.SetActive(true);
         } else {

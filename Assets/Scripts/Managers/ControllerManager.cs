@@ -43,37 +43,50 @@ public class ControllerManager : MonoBehaviour {
         }
     }
 
-    private float speedFactor = 1f;
+    private bool button1Fired;
 
-    public float SpeedFactor {
+    public bool Button1Fired {
         get {
-            return this.speedFactor;
+            return this.button1Fired;
         }
         set {
-            this.speedFactor = value;
+            this.button1Fired = value;
         }
     }
 
-    void Start() {
-        instance = this;
+    private bool button3Fired;
+
+    public bool Button3Fired {
+        get {
+            return this.button3Fired;
+        }
+        set {
+            this.button3Fired = value;
+        }
+    }
+
+    private void Awake() {
+        if (instance != null && instance != this && this.gameObject != null) {
+            Destroy(this.gameObject);
+        } else {
+            instance = this;
+        }
     }
 
     void Update() {
         this.x = Input.GetAxisRaw("Horizontal") + this.joystick.Horizontal;
         this.y = Input.GetAxisRaw("Vertical") + this.joystick.Vertical;
 
-        if (Input.GetButton("Fire1") || this.fire1Button.Pressed) {
-            OnFireButton1Pressed?.Invoke();
+        if (Input.GetButtonDown("Fire1") || this.fire1Button.Pressed) {
+            this.button1Fired = true;
+        } else {
+            this.button1Fired = false;
         }
 
         if (Input.GetButton("Fire3") || this.fire3Button.Pressed) {
-            this.speedFactor = 2f;
+            this.button3Fired = true;
         } else {
-            this.speedFactor = 1f;
+            this.button3Fired = false;
         }
     }
-
-    public delegate void OnFireButton1Handler();
-
-    public event OnFireButton1Handler OnFireButton1Pressed;
 }
