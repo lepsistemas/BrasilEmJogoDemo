@@ -1,0 +1,52 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1fab2e3a52564cdc3b63e3bc759f3cda, type: 3}
+  m_Name: road
+  m_EditorClassIdentifier: 
+  m_Sprite: {fileID: 21300000, guid: 94662e56a06a0a2ac9902b0728e72d8e, type: 3}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_Transform:
+    e00: 1
+    e01: 0
+    e02: 0
+    e03: 0
+    e10: 0
+    e11: 1
+    e12: 0
+    e13: 0
+    e20: 0
+    e21: 0
+    e22: 1
+    e23: 0
+    e30: 0
+    e31: 0
+    e32: 0
+    e33: 1
+  m_InstancedGameObject: {fileID: 7253618862687530691, guid: be9e624962fd8865cbac5d511eef0655,
+    type: 3}
+  m_Flags: 1
+  m_ColliderType: 1
+  sprites:
+  - {fileID: 21300000, guid: ded34fddf59117bec96586dd5196a64e, type: 3}
+  - {fileID: 21300000, guid: f8e2e9d48a52f2ee687b64766a1f61ec, type: 3}
+  - {fileID: 21300000, guid: c397e871d48f8b432944cadfa41c2e71, type: 3}
+  - {fileID: 21300000, guid: 31d11c376b9f84089b3b95f1909c0be1, type: 3}
+  - {fileID: 21300000, guid: 94662e56a06a0a2ac9902b0728e72d8e, type: 3}
+  - {fileID: 21300000, guid: ffd947e9dc8e349309cf959d7dfa402a, type: 3}
+  - {fileID: 21300000, guid: d0545a89453d68eb8a10928ad2974df2, type: 3}
+  - {fileID: 21300000, guid: 7fcdbed9d60af751ba5c9b5f0e7d8297, type: 3}
+  - {fileID: 21300000, guid: 650b7eabfa3137257961ad96b1b52765, type: 3}
+  - {fileID: 21300000, guid: 02b3d089f9275dbff830294690ce703d, type: 3}
+  - {fileID: 21300000, guid: 27912222326d332719b2f468538f4ca6, type: 3}
+  - {fileID: 21300000, guid: 6959f185872d174b4827b9b421e23d60, type: 3}
+  - {fileID: 21300000, guid: b78b4c2a94c5c189c96178800aa0bb79, type: 3}
+  preview: {fileID: 21300000, guid: 94662e56a06a0a2ac9902b0728e72d8e, type: 3}
