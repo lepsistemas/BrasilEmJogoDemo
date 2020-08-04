@@ -29,7 +29,7 @@ public class GameManager : MonoBehaviour {
         }
     }
 
-    void Start() {
+    void Awake() {
         instance = this;
         this.gameOver = false;
 
@@ -38,6 +38,10 @@ public class GameManager : MonoBehaviour {
         TimeManager.Instance.DayDurationInSeconds = 0.5f;
         TimeManager.Instance.InitialDate = DateTime.ParseExact("1500-01-01", "yyyy-MM-dd", new System.Globalization.CultureInfo("pt-BR"), System.Globalization.DateTimeStyles.None);
         TimeManager.Instance.EndDate = DateTime.ParseExact("1500-04-22", "yyyy-MM-dd", new System.Globalization.CultureInfo("pt-BR"), System.Globalization.DateTimeStyles.None);
+    }
+
+    void Start() {
+        
     }
 
     void Update() {

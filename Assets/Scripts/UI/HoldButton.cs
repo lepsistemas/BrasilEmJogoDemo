@@ -1,7 +1,7 @@
 ﻿using UnityEngine;
 using UnityEngine.EventSystems;
 
-public class JoystickButton : MonoBehaviour, IPointerDownHandler, IPointerUpHandler {
+public class HoldButton : MonoBehaviour, IPointerDownHandler, IPointerUpHandler {
 
     private bool holding;
 
@@ -9,19 +9,8 @@ public class JoystickButton : MonoBehaviour, IPointerDownHandler, IPointerUpHand
         get {
             return this.holding;
         }
-        set {
-            this.holding = value;
-        }
     }
     
-    void Start() {
-        
-    }
-
-    void Update() {
-        
-    }
-
     public void OnPointerDown(PointerEventData eventData) {
         this.holding = true;
     }

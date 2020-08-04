@@ -85,7 +85,6 @@ public class DialogManager : MonoBehaviour {
         this.title.text = "";
         this.dialogBox.SetActive(false);
         this.titleBox.SetActive(false);
-        UIManager.Instance.IsDialogActive = false;
         GameManager.Instance.Player.CanMove = true;
     }
 
@@ -96,7 +95,6 @@ public class DialogManager : MonoBehaviour {
             if (this.dialogs[0].Speaker != null) {
                 this.titleBox.SetActive(true);
             }
-            UIManager.Instance.IsDialogActive = true;
         }
     }
 }

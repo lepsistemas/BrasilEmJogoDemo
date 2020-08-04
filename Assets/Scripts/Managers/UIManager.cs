@@ -18,28 +18,29 @@ public class UIManager : MonoBehaviour {
         } else {
             instance = this;
         }
+
+        this.gameStatus = GameObject.FindObjectOfType<GameStatus>();
+        this.virtualJoystick = GameObject.FindObjectOfType<VirtualJoystick>();
+        this.dialogBox = GameObject.FindObjectOfType<DialogBox>();
+
+        if (Application.platform == RuntimePlatform.Android) {
+            this.virtualJoystick.gameObject.SetActive(true);
+        } else {
+            this.virtualJoystick.gameObject.SetActive(true);
+        }
+
+        this.dialogBox.gameObject.SetActive(false);
     }
 
-    private bool isDialogActive = false;
+    private GameStatus gameStatus;
 
-    public bool IsDialogActive {
+    private VirtualJoystick virtualJoystick;
+
+    private DialogBox dialogBox;
+
+    public DialogBox DialogBox {
         get {
-            return this.isDialogActive;
+            return this.dialogBox;
         }
-        set {
-            this.isDialogActive = value;
-        }
-    }
-    
-    void Start() {
-        // if (Application.platform == RuntimePlatform.Android) {
-        //     this.virtualJoystick.gameObject.SetActive(true);
-        // } else {
-        //     this.virtualJoystick.gameObject.SetActive(true);
-        // }
-    }
-
-    void Update() {
-        
     }
 }

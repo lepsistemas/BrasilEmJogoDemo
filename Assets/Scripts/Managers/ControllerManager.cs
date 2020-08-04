@@ -1,6 +1,4 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 
 public class ControllerManager : MonoBehaviour {
 
@@ -56,6 +54,9 @@ public class ControllerManager : MonoBehaviour {
         }
     }
 
+    [SerializeField]
+    private VirtualJoystick virtualJoystick = null;
+
     private void Awake() {
         if (instance != null && instance != this && this.gameObject != null) {
             Destroy(this.gameObject);
@@ -65,16 +66,17 @@ public class ControllerManager : MonoBehaviour {
     }
 
     void Update() {
-        this.x = Input.GetAxisRaw("Horizontal")/* + this.virtualJoystick.Joystick.Horizontal*/;
-        this.y = Input.GetAxisRaw("Vertical")/* + this.virtualJoystick.Joystick.Vertical*/;
+        this.x = Input.GetAxisRaw("Horizontal") + this.virtualJoystick.Pad.Horizontal;
+        this.y = Input.GetAxisRaw("Vertical") + this.virtualJoystick.Pad.Vertical;
 
-        if (Input.GetButtonDown("Fire1")) {
+        if (Input.GetButtonDown("Fire1") || this.virtualJoystick.PrimaryButton.Pressed) {
             this.primaryButtonFired = true;
+            this.virtualJoystick.PrimaryButton.Pressed = false;
         } else {
             this.primaryButtonFired = false;
         }
 
-        if (Input.GetButton("Fire3")/* || this.virtualJoystick.SecondaryButton.Holding*/) {
+        if (Input.GetButton("Fire3") || this.virtualJoystick.SecondaryButton.Holding) {
             this.secondaryButtonFired = true;
         } else {
             this.secondaryButtonFired = false;
