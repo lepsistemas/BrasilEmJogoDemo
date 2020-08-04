@@ -66,17 +66,25 @@ public class ControllerManager : MonoBehaviour {
     }
 
     void Update() {
-        this.x = Input.GetAxisRaw("Horizontal") + this.virtualJoystick.Pad.Horizontal;
-        this.y = Input.GetAxisRaw("Vertical") + this.virtualJoystick.Pad.Vertical;
+        this.x = Input.GetAxisRaw("Horizontal");
+        this.y = Input.GetAxisRaw("Vertical");
+        if (this.virtualJoystick != null && this.virtualJoystick.Pad != null) {
+            this.x += this.virtualJoystick.Pad.Horizontal;
+            this.y += this.virtualJoystick.Pad.Vertical;
+        }
 
-        if (Input.GetButtonDown("Fire1") || this.virtualJoystick.PrimaryButton.Pressed) {
+        bool primaryButtonPressed = this.virtualJoystick != null && this.virtualJoystick.PrimaryButton != null && this.virtualJoystick.PrimaryButton.Pressed;
+        if (Input.GetButtonDown("Fire1") || primaryButtonPressed) {
             this.primaryButtonFired = true;
-            this.virtualJoystick.PrimaryButton.Pressed = false;
+            if (this.virtualJoystick != null && this.virtualJoystick.PrimaryButton != null) {
+                this.virtualJoystick.PrimaryButton.Pressed = false;
+            }
         } else {
             this.primaryButtonFired = false;
         }
 
-        if (Input.GetButton("Fire3") || this.virtualJoystick.SecondaryButton.Holding) {
+        bool secondaryButtonHolding = this.virtualJoystick != null && this.virtualJoystick.SecondaryButton != null && this.virtualJoystick.SecondaryButton.Holding;
+        if (Input.GetButton("Fire3") || secondaryButtonHolding) {
             this.secondaryButtonFired = true;
         } else {
             this.secondaryButtonFired = false;

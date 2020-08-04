@@ -13,7 +13,9 @@ public class Player : Character {
 
     public bool CanMove {
         get {
-            return !GameManager.Instance.GameOver && this.canMove;
+            return !GameManager.Instance.GameOver 
+                    && !UIManager.Instance.DialogBox.gameObject.activeInHierarchy
+                    && this.canMove;
         }
         set {
             this.canMove = value;

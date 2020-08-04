@@ -26,7 +26,7 @@ public class UIManager : MonoBehaviour {
         if (Application.platform == RuntimePlatform.Android) {
             this.virtualJoystick.gameObject.SetActive(true);
         } else {
-            this.virtualJoystick.gameObject.SetActive(true);
+            this.virtualJoystick.gameObject.SetActive(false);
         }
 
         this.dialogBox.gameObject.SetActive(false);

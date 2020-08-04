@@ -17,10 +17,8 @@ public class ControlSign : MonoBehaviour {
             if (ControllerManager.Instance.PrimaryButtonFired) {
                 if (!UIManager.Instance.DialogBox.gameObject.activeInHierarchy) {
                     SignManager.Instance.ShowSign(this.sign);
-                    GameManager.Instance.Player.CanMove = false;
                 } else {
                     SignManager.Instance.HideSign();
-                    GameManager.Instance.Player.CanMove = true;
                 }
             }
         }
