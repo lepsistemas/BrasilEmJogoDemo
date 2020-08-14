@@ -29,7 +29,7 @@ public class GameStatus : MonoBehaviour {
     void Start() {
         this.currentPercentage = 0f;
         this.avatar.color = new Color(255, 255, 255, 1f);
-        this.currentPhaseText.text = "A caminho das Índias";
+        this.currentPhaseText.text = "A Caminho das Índias";
     }
 
     void Update() {

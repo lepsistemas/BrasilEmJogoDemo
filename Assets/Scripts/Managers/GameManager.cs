@@ -37,7 +37,7 @@ public class GameManager : MonoBehaviour {
         // Move to a QuestManager for each Quest will have its own day duration maybe???
         TimeManager.Instance.DayDurationInSeconds = 0.5f;
         TimeManager.Instance.InitialDate = DateTime.ParseExact("1500-01-01", "yyyy-MM-dd", new System.Globalization.CultureInfo("pt-BR"), System.Globalization.DateTimeStyles.None);
-        TimeManager.Instance.EndDate = DateTime.ParseExact("1500-04-22", "yyyy-MM-dd", new System.Globalization.CultureInfo("pt-BR"), System.Globalization.DateTimeStyles.None);
+        TimeManager.Instance.EndDate = DateTime.ParseExact("1500-03-08", "yyyy-MM-dd", new System.Globalization.CultureInfo("pt-BR"), System.Globalization.DateTimeStyles.None);
     }
 
     void Start() {
