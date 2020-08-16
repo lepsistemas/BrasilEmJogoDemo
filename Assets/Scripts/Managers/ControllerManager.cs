@@ -54,6 +54,17 @@ public class ControllerManager : MonoBehaviour {
         }
     }
 
+    private bool cancelButtonFired;
+
+    public bool CancelButtonFired {
+        get {
+            return this.cancelButtonFired;
+        }
+        set {
+            this.cancelButtonFired = value;
+        }
+    }
+
     [SerializeField]
     private VirtualJoystick virtualJoystick = null;
 
@@ -88,6 +99,12 @@ public class ControllerManager : MonoBehaviour {
             this.secondaryButtonFired = true;
         } else {
             this.secondaryButtonFired = false;
+        }
+
+        if (Input.GetButtonDown("Cancel")) {
+            this.cancelButtonFired = true;
+        } else {
+            this.cancelButtonFired = false;
         }
     }
 }

@@ -15,6 +15,7 @@ public class Player : Character {
         get {
             return !GameManager.Instance.GameOver 
                     && !UIManager.Instance.DialogBox.gameObject.activeInHierarchy
+                    && !UIManager.Instance.Menu.gameObject.activeInHierarchy
                     && this.canMove;
         }
         set {

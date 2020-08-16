@@ -45,7 +45,9 @@ public class GameManager : MonoBehaviour {
     }
 
     void Update() {
-
+        if (ControllerManager.Instance.CancelButtonFired) {
+            MenuManager.Instance.OpenCloseMenu();
+        }
     }
 
     void OnEnable() {

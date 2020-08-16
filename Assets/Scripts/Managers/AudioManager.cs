@@ -15,7 +15,11 @@ public class AudioManager : MonoBehaviour {
     public AudioSource[] music;
     
     void Start() {
-        instance = this;
+        if (instance != null && instance != this && this.gameObject != null) {
+            Destroy(this.gameObject);
+        } else {
+            instance = this;
+        }
     }
 
     public void PlayMusic(int index) {
