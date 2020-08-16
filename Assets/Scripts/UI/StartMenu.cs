@@ -5,7 +5,7 @@ using UnityEngine.SceneManagement;
 public class StartMenu : MonoBehaviour {
 
     [SerializeField]
-    private GameObject newGameButton;
+    private GameObject newGameButton = null;
 
     void Start() {
         AudioManager.Instance.PlayMusic(AudioManager.START_MENU_MUSIC_INDEX);
@@ -14,7 +14,7 @@ public class StartMenu : MonoBehaviour {
     }
 
     public void NewGame() {
-        SceneManager.LoadScene("Lisbon");
+        SceneManager.LoadScene("LoadLisbon");
     }
 
     public void QuitGame() {
