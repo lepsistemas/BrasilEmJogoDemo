@@ -52,10 +52,12 @@ public class GameManager : MonoBehaviour {
 
     void OnEnable() {
         TimeManager.Instance.OnTimeAdvance += this.Advance;
+        AudioManager.Instance.PlayMusic(AudioManager.START_MENU_MUSIC_INDEX);
     }
 
     void OnDisable() {
         TimeManager.Instance.OnTimeAdvance -= this.Advance;
+        AudioManager.Instance.PauseMusic(AudioManager.START_MENU_MUSIC_INDEX);
     }
 
     private void Advance() {

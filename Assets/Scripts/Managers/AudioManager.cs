@@ -14,7 +14,7 @@ public class AudioManager : MonoBehaviour {
 
     public AudioSource[] music;
     
-    void Start() {
+    void Awake() {
         if (instance != null && instance != this && this.gameObject != null) {
             Destroy(this.gameObject);
         } else {
@@ -24,5 +24,9 @@ public class AudioManager : MonoBehaviour {
 
     public void PlayMusic(int index) {
         this.music[index].Play();
+    }
+
+    public void PauseMusic(int index) {
+        this.music[index].Pause();
     }
 }

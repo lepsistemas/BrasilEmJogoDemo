@@ -8,7 +8,6 @@ public class StartMenu : MonoBehaviour {
     private GameObject newGameButton = null;
 
     void Start() {
-        AudioManager.Instance.PlayMusic(AudioManager.START_MENU_MUSIC_INDEX);
         EventSystem.current.SetSelectedGameObject(null);
         EventSystem.current.SetSelectedGameObject(this.newGameButton);
     }
