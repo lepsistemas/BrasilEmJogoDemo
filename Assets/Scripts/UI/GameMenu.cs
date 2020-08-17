@@ -15,6 +15,9 @@ public class GameMenu : MonoBehaviour {
     [SerializeField]
     private GameObject confirmDialog = null;
 
+    [SerializeField]
+    private GameObject menu = null;
+
     void Awake() {
         this.confirmDialog.SetActive(false);
     }
@@ -43,6 +46,7 @@ public class GameMenu : MonoBehaviour {
     }
 
     public void ConfirmQuitGame() {
+        this.menu.SetActive(false);
         this.confirmDialog.SetActive(true);
         EventSystem.current.SetSelectedGameObject(null);
         EventSystem.current.SetSelectedGameObject(this.cancelButton);
@@ -50,6 +54,7 @@ public class GameMenu : MonoBehaviour {
 
     public void CloseConfirm() {
         this.confirmDialog.SetActive(false);
+        this.menu.SetActive(true);
         EventSystem.current.SetSelectedGameObject(null);
         EventSystem.current.SetSelectedGameObject(this.quitButton);
     }

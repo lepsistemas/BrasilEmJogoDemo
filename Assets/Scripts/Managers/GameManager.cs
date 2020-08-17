@@ -33,6 +33,8 @@ public class GameManager : MonoBehaviour {
         instance = this;
         this.gameOver = false;
 
+        Cursor.visible = false;
+
         // TODO
         // Move to a QuestManager for each Quest will have its own day duration maybe???
         TimeManager.Instance.DayDurationInSeconds = 0.5f;
