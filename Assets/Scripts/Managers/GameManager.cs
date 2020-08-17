@@ -34,6 +34,7 @@ public class GameManager : MonoBehaviour {
         this.gameOver = false;
 
         Cursor.visible = false;
+        Cursor.lockState = CursorLockMode.Locked;
 
         // TODO
         // Move to a QuestManager for each Quest will have its own day duration maybe???

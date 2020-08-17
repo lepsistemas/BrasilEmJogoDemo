@@ -31,6 +31,7 @@ public class GameMenu : MonoBehaviour {
     }
 
     void OnEnable() {
+        this.menu.SetActive(true);
         EventSystem.current.SetSelectedGameObject(null);
         EventSystem.current.SetSelectedGameObject(this.schoolBagButton);
     }
