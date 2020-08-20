@@ -26,15 +26,27 @@ public class GameStatus : MonoBehaviour {
         }
     }
 
-    void Start() {
-        this.currentPercentage = 0f;
+    void Awake() {
+        this.currentPercentage = 1f;
         this.avatar.color = new Color(255, 255, 255, 1f);
         this.currentPhaseText.text = "A Caminho das Índias";
+        this.currentDateText.text = TimeManager.Instance.CurrentDate.ToString("dd/MM/yyyy");
     }
 
     void Update() {
+        this.avatar.color = new Color(255, 255, 255, Mathf.Lerp(this.avatar.color.a, this.currentPercentage, Time.deltaTime));
+    }
+
+    void OnEnable() {
+        TimeManager.Instance.OnTimeAdvance += this.OneMoreDay;
+    }
+
+    void OnDisable() {
+        TimeManager.Instance.OnTimeAdvance -= this.OneMoreDay;
+    }
+
+    void OneMoreDay() {
         this.UpdateCurrentPercentage();
-        this.avatar.color = new Color(255, 255, 255, Mathf.Lerp(this.avatar.color.a, this.currentPercentage, Time.deltaTime * (1 / TimeManager.Instance.DayDurationInSeconds)));
         this.currentDateText.text = TimeManager.Instance.CurrentDate.ToString("dd/MM/yyyy");
     }
 
@@ -46,8 +58,6 @@ public class GameStatus : MonoBehaviour {
         float maxDateBinary = (float) TimeManager.Instance.EndDate.ToBinary();
         float currentDateBinary = (float) TimeManager.Instance.CurrentDate.ToBinary();
 
-        // float percent = (newCurrentBinary - minDateBinary) / (maxDateBinary - minDateBinary);
-        // this.currentPercentage = percent * (maxPercentage - minPercentage) + minPercentage;
         this.currentPercentage = RangePercentage.Calculate(
             minPercentage, maxPercentage, 
             minDateBinary, maxDateBinary, 

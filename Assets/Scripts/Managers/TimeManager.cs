@@ -1,5 +1,7 @@
-﻿using System;
-using UnityEngine;
+﻿using UnityEngine;
+using System;
+using System.Collections;
+using System.Collections.Generic;
 
 public class TimeManager : MonoBehaviour {
 
@@ -63,20 +65,19 @@ public class TimeManager : MonoBehaviour {
         }
     }
 
-    private float advanceTimer = 1f;
     private bool pause = false;
 
     void Start() {
-
+        InvokeRepeating("AdvanceTime", 1f, this.dayDurationInSeconds);
     }
 
     void Update() {
-        if (!this.pause) {
-            this.advanceTimer -= Time.deltaTime * (1 / TimeManager.Instance.DayDurationInSeconds);
-            if (this.advanceTimer <= 0f) {
-                this.advanceTimer++;
-                OnTimeAdvance?.Invoke();
-            }
+    }
+
+    void AdvanceTime() {
+        if (this.initialDate != null && this.endDate != null && !this.pause) {
+            this.MakeItTomorrow();
+            OnTimeAdvance?.Invoke();
         }
     }
 

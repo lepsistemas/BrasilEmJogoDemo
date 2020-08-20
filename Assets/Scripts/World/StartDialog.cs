@@ -15,7 +15,6 @@ public class StartDialog : MonoBehaviour {
     void Update() {
         if (this.action && this.activated && !DialogManager.Instance.IsDialogBoxActivated()) {
             this.action = false;
-            // DialogManager.Instance.ShowDialog(new Dialog[]{new Dialog(this.sign)});
         }
     }
 

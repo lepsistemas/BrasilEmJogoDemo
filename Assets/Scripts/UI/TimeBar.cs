@@ -16,7 +16,7 @@ public class TimeBar : MonoBehaviour {
     
     // private Quest quest;
 
-    void Start() {
+    void Awake() {
         this.bar = GetComponent<Image>();
         this.bar.fillAmount = 0f;
         this.currentPercentage = 0f;
@@ -28,11 +28,22 @@ public class TimeBar : MonoBehaviour {
     }
 
     void Update() {
-        this.UpdateCurrentPercentage();
-        this.bar.fillAmount = Mathf.Lerp(this.bar.fillAmount, this.currentPercentage, Time.deltaTime * (1 / TimeManager.Instance.DayDurationInSeconds));
+        this.bar.fillAmount = Mathf.Lerp(this.bar.fillAmount, this.currentPercentage, Time.deltaTime);
     }
 
-    public void UpdateCurrentPercentage() {
+    void OnEnable() {
+        TimeManager.Instance.OnTimeAdvance += this.OneMoreDay;
+    }
+
+    void OnDisable() {
+        TimeManager.Instance.OnTimeAdvance -= this.OneMoreDay;
+    }
+
+    void OneMoreDay() {
+        this.UpdateCurrentPercentage();
+    }
+
+    internal void UpdateCurrentPercentage() {
         float minPercentage = 0f;
         float maxPercentage = 1f;
         
