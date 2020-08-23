@@ -25,9 +25,6 @@ public abstract class Character : MonoBehaviour {
         this.Animate();
     }
 
-    private void FixedUpdate() {
-    }
-
     public void Move() {
         this.body.velocity = this.direction.normalized * this.speed;
     }

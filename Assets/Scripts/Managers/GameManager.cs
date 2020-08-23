@@ -21,31 +21,18 @@ public class GameManager : MonoBehaviour {
         }
     }
 
-    private bool gameOver;
-
-    public bool GameOver {
-        get {
-            return this.gameOver;
-        }
-    }
-
     void Awake() {
         instance = this;
-        this.gameOver = false;
 
         // Cursor.visible = false;
         // Cursor.lockState = CursorLockMode.Locked;
 
         // TODO
         // Move to a QuestManager for each Quest will have its own day duration maybe???
-        TimeManager.Instance.DayDurationInSeconds = 1f;
+        TimeManager.Instance.DayDurationInSeconds = 0.2f;
         TimeManager.Instance.InitialDate = DateTime.ParseExact("1500-01-01", "yyyy-MM-dd", new System.Globalization.CultureInfo("pt-BR"), System.Globalization.DateTimeStyles.None);
         TimeManager.Instance.CurrentDate = TimeManager.Instance.InitialDate;
         TimeManager.Instance.EndDate = DateTime.ParseExact("1500-03-08", "yyyy-MM-dd", new System.Globalization.CultureInfo("pt-BR"), System.Globalization.DateTimeStyles.None);
-    }
-
-    void Start() {
-        
     }
 
     void Update() {
@@ -55,20 +42,22 @@ public class GameManager : MonoBehaviour {
     }
 
     void OnEnable() {
-        TimeManager.Instance.OnTimeAdvance += this.CheckGameOver;
+        TimeManager.Instance.OnTimeAdvance += this.OnTimeAdvance;
         AudioManager.Instance.PlayMusic(AudioManager.START_MENU_MUSIC_INDEX);
     }
 
     void OnDisable() {
-        TimeManager.Instance.OnTimeAdvance -= this.CheckGameOver;
+        TimeManager.Instance.OnTimeAdvance -= this.OnTimeAdvance;
         AudioManager.Instance.PauseMusic(AudioManager.START_MENU_MUSIC_INDEX);
     }
 
-    private void CheckGameOver() {
+    private void OnTimeAdvance() {
         if (TimeManager.Instance.CurrentDate.CompareTo(TimeManager.Instance.EndDate) >= 0) {
-            TimeManager.Instance.Pause();
-            this.gameOver = true;
-            Debug.Log("Call Game Over System!");
+            OnGameOver?.Invoke();
         }
     }
+
+    public delegate void OnGameOverHandler();
+
+    public event OnGameOverHandler OnGameOver;
 }

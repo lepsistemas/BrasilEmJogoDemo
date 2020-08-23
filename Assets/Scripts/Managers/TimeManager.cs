@@ -68,10 +68,8 @@ public class TimeManager : MonoBehaviour {
     private bool pause = false;
 
     void Start() {
-        InvokeRepeating("AdvanceTime", 1f, this.dayDurationInSeconds);
-    }
-
-    void Update() {
+        GameManager.Instance.OnGameOver += this.OnGameOver;
+        InvokeRepeating("AdvanceTime", this.dayDurationInSeconds, this.dayDurationInSeconds);
     }
 
     void AdvanceTime() {
@@ -99,6 +97,10 @@ public class TimeManager : MonoBehaviour {
         }
 
         this.currentDate = newCurrentDate;
+    }
+
+    private void OnGameOver() {
+        this.Pause();
     }
 
     public delegate void OnTimeAdvanceHandler();
