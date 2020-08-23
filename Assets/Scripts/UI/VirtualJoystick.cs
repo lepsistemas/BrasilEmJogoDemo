@@ -32,7 +32,4 @@ public class VirtualJoystick : MonoBehaviour {
         this.primaryButton = FindObjectOfType<ActionButton>();
         this.secondaryButton = FindObjectOfType<HoldButton>();
     }
-
-    void Update() {
-    }
 }

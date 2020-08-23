@@ -21,14 +21,6 @@ public class GameMenu : MonoBehaviour {
     void Awake() {
         this.confirmDialog.SetActive(false);
     }
-    
-    void Start() {
-        
-    }
-
-    void Update() {
-        
-    }
 
     void OnEnable() {
         this.menu.SetActive(true);

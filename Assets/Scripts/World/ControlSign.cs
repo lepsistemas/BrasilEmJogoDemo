@@ -8,9 +8,6 @@ public class ControlSign : MonoBehaviour {
     private string sign = null;
 
     private bool canActivate;
-    
-    void Start() {
-    }
 
     void Update() {
         if (this.canActivate) {

@@ -20,10 +20,6 @@ public class Obstacle : MonoBehaviour, IComparable<Obstacle> {
         this.fadedColor.a = 0.7f;
     }
 
-    void Update() {
-        
-    }
-
     public int CompareTo(Obstacle other) {
         if (ObstacleRenderer.sortingOrder > other.ObstacleRenderer.sortingOrder) {
             return 1;

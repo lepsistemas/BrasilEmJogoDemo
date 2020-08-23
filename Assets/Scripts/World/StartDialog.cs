@@ -8,7 +8,7 @@ public class StartDialog : MonoBehaviour {
 
     private bool action;
 
-    void Start() {
+    void Awake() {
         this.activated = false;
     }
 

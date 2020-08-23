@@ -11,10 +11,6 @@ public class LayerSorter : MonoBehaviour {
         this.defaultSortingOrder = this.transform.parent.GetComponent<SpriteRenderer>().sortingOrder;
     }
 
-    void Update() {
-        
-    }
-
     private void OnTriggerEnter2D(Collider2D collision) {
         if (collision.tag == "Obstacle") {
             

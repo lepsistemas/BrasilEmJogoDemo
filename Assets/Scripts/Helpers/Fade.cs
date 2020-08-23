@@ -7,10 +7,6 @@ public class Fade : MonoBehaviour {
         Invoke("LaunchStartMenu", 3.0f);
     }
 
-    void Update() {
-        
-    }
-
     void LaunchStartMenu() {
         SceneManager.LoadScene("StartMenu");
     }

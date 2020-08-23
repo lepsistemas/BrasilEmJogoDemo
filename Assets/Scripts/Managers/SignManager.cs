@@ -19,9 +19,6 @@ public class SignManager : MonoBehaviour {
         }
     }
 
-    void Start() {
-    }
-
     public void ShowSign(string sign) {
         UIManager.Instance.DialogBox.TitleBox.gameObject.SetActive(false);
         UIManager.Instance.DialogBox.MessageBox.gameObject.SetActive(true);

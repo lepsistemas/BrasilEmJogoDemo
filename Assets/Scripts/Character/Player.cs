@@ -50,7 +50,7 @@ public class Player : Character {
 
     public void SetLimits(Vector3 min, Vector3 max) {
         this.min = new Vector3(min.x + 0.5f, min.y + 0.5f, min.z);
-        this.max = new Vector3(max.x - 0.5f, max.y - 0.5f, max.z);;
+        this.max = new Vector3(max.x - 0.5f, max.y - 0.5f, max.z);
     }
 
     protected override void SetDirection() {
