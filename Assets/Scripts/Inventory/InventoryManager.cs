@@ -30,10 +30,13 @@ public class InventoryManager : MonoBehaviour
     [SerializeField]
     GameObject ItemActionAnchor;
 
-    int SelecteditwmId;
-
     [SerializeField]
     Image ItemActionSprite;
+
+    [SerializeField]
+    Text ItemActionText;
+
+    int SelecteditmId;    
 
     [SerializeField]
     Text PlayerCash;
@@ -54,10 +57,7 @@ public class InventoryManager : MonoBehaviour
 
     void Start()
     {
-        StartCoroutine(ShowWorld());
-        //characterInfo = CharacterInfo.Instance;
-        //inventoryUi.SetActive(false);
-        //ItemActionAnchor.SetActive(false);
+        ItemActionAnchor.SetActive(false);
 
         for (int i = 0; i < initialItemList.Length; i++)
         {
@@ -65,23 +65,18 @@ public class InventoryManager : MonoBehaviour
         }
 
         Mountinventory();
-
-
     }
 
     public void AddItemByDB(ItemScriptable _item)
     {
-        //Debug.Log("AddItem(ItemFarinaScriptable _item)");
         itemList.Add(new Item(_item));
         Mountinventory();
     }
 
     public void AddItem(ItemScriptable _item)
     {
-        //Debug.Log("AddItem(ItemFarinaScriptable _item)");
         itemList.Add(new Item(_item));
         Mountinventory();
-        //StartCoroutine(SaveInventory());
     }
 
     void Mountinventory()
@@ -104,9 +99,18 @@ public class InventoryManager : MonoBehaviour
 
     public void Show()
     {
-        Mountinventory();
-        //PlayerCash.text = characterInfo.CharacterCash.ToString();
-        inventoryUi.SetActive(true);
+        if(inventoryUi.activeSelf == false)
+        {
+            Mountinventory();
+            //PlayerCash.text = characterInfo.CharacterCash.ToString();
+            inventoryUi.SetActive(true);
+        }
+        else
+        {
+            inventoryUi.SetActive(false);
+        }
+
+        
     }
 
     public void Hide()
@@ -116,45 +120,37 @@ public class InventoryManager : MonoBehaviour
 
     public void ClickOnItem(int _item)
     {
-        SelecteditwmId = _item;
+        SelecteditmId = _item;
         ItemActionSprite.sprite = itemList[_item].itemInfo.itemSprite;
+        ItemActionText.text = itemList[_item].itemInfo.itemName;
         ItemActionAnchor.SetActive(true);
     }
 
     public void UseItem()
     {
         if (OnUseItem != null)
-            OnUseItem(itemList[SelecteditwmId].itemInfo.itemId);
+            OnUseItem(itemList[SelecteditmId].itemInfo.itemId);
 
         //itemList.RemoveAt(SelecteditwmId);
         inventoryUi.SetActive(false);
         ItemActionAnchor.SetActive(false);
     }
 
-    public void SelectItem(int _item) {
-        SelecteditwmId = _item;
-    }
-
-    public void DeselectUsedItem() {
-        OnUseItem(-1);
-    }
-
-    public void OfertarItem()
+    public void SelectItem(int _item)
     {
-        if (OnOfertItem != null)
-            OnOfertItem(itemList[SelecteditwmId].itemInfo.itemId);
+        SelecteditmId = _item;
+    }
 
-        itemList.RemoveAt(SelecteditwmId);
-        inventoryUi.SetActive(false);
-        ItemActionAnchor.SetActive(false);
+    public void DeselectUsedItem()
+    {
+        OnUseItem(-1);
     }
 
     public void DeleteItem()
     {
-        itemList.RemoveAt(SelecteditwmId);
-        inventoryUi.SetActive(false);
-        ItemActionAnchor.SetActive(false);
-        //StartCoroutine(SaveInventory());
+        itemList.RemoveAt(SelecteditmId);
+        Mountinventory();
+        ItemActionAnchor.SetActive(false);        
     }
 
     public void Close()
@@ -196,32 +192,4 @@ public class InventoryManager : MonoBehaviour
     }
 
 
-    IEnumerator ShowWorld()
-    {
-        yield return new WaitForSeconds(2);
-        show = true;
-    }
-
-    bool show = false;
-    [SerializeField]
-    Image LoadImage;
-
-    float timer;
-
-    /*/void Update()
-    {
-        if(show == true)
-        {
-            float alpha = Mathf.Lerp(1f, 0f, timer * 1);
-            timer += Time.deltaTime;
-            // I'll guess the script is attached to the object you want to fade out, and that you have the appropriate shader.
-            LoadImage.color = new Color(255, 255, 255, alpha);
-
-            if (alpha == 0)
-            {
-                Destroy(LoadImage.gameObject);
-                show = false;
-            }
-        }
-    }/*/
 }
