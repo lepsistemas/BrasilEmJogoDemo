@@ -2,35 +2,27 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class ItemFarinaController : MonoBehaviour
+public class ItemController : MonoBehaviour
 {
 
-    public GameObject[] ItemAnchor;    
+    [SerializeField]
+    ItemScriptable info;
+
+    [SerializeField]
+    SpriteRenderer ItemSprite;
 
     void Start()
     {
-        Clear();
+        ItemSprite.sprite = info.itemSprite;
     }
 
-    public void LoadItem(int _item)
+    void OnCollisionEnter2D(Collision2D col)
     {
-        Clear();
-        ItemAnchor[_item].SetActive(true);
-    }
-
-    public void DisableItem()
-    {
-        Clear();
-    }
-
-    public void Clear()
-    {
-        foreach (GameObject g in ItemAnchor)
+        if(col.transform.tag == "Player")
         {
-            g.SetActive(false);
+            InventoryManager.Instance.AddItem(info);
+            Destroy(gameObject);
         }
     }
-
-
 
 }

@@ -63,13 +63,13 @@ public class InventoryManager : MonoBehaviour
 
     public void AddItemByDB(ItemScriptable _item)
     {
-        characterInfo.playerItemList.Add(new Item(_item));
+        characterInfo.AddItem(_item);
         Mountinventory();
     }
 
     public void AddItem(ItemScriptable _item)
     {
-        characterInfo.playerItemList.Add(new Item(_item));
+        characterInfo.AddItem(_item);
         Mountinventory();        
     }
 
